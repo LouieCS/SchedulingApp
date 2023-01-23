@@ -1,6 +1,6 @@
 # SchedulingApp
 
-•  Scheduling Application - The application accesses a database to manage (add, update, delete) appointments and customer informations.
+•  Scheduling Application - The application accesses a relational database to manage (add, update, delete) appointments and customer informations.
 
 •  IntelliJ IDEA 2022.2.3 (Community Edition)
    Oracle OpenJDK version 17.0.5
