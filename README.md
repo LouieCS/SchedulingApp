@@ -10,13 +10,8 @@
 
 ___________________________________________________________________
 
-QAM2 — QAM2 TASK 1: JAVA APPLICATION DEVELOPMENT
-SOFTWARE II - ADVANCED JAVA CONCEPTS — C195
-
-PRFA — QAM2
-
-TASK OVERVIEWSUBMISSIONSEVALUATION REPORT
 COMPETENCIES
+
 4025.01.05 : Database and File Server Applications
 
 The graduate produces database and file server applications using advanced Java programming language constructs to meet business requirements.
