@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainViewController">
+   <children>
+      <VBox layoutX="10.0" layoutY="10.0" prefHeight="450.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="800.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="589.0" spacing="10.0">
+                     <children>
+                        <Label fx:id="filterLBL" text="View Appointments by" />
+                        <RadioButton fx:id="filterWeekRADIO" mnemonicParsing="false" onAction="#onActionFilterByWeek" text="Week">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="filterAppointmentsRADIOGROUP" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="filterMonthRADIO" mnemonicParsing="false" onAction="#onActionFilterByMonth" text="Month" toggleGroup="$filterAppointmentsRADIOGROUP" />
+                        <RadioButton fx:id="filterNoneRADIO" mnemonicParsing="false" onAction="#onActionFilterByNone" selected="true" text="None" toggleGroup="$filterAppointmentsRADIOGROUP" />
+                        <VBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="256.0">
+                           <children>
+                              <Label fx:id="numberOfAppointmentLBL" />
+                              <Label fx:id="interfaceApptMessageLBL" />
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
+                  <TextField fx:id="searchTableTXT" onAction="#onActionSearchTable" prefHeight="26.0" prefWidth="190.0" promptText="Search by " />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets right="20.0" />
+               </padding>
+            </HBox>
+            <TabPane prefHeight="330.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+               <tabs>
+                  <Tab fx:id="appointmentsTab" onSelectionChanged="#onSelectionAppointments" text="Appointments">
+                     <content>
+                        <TableView fx:id="appointmentsTBL">
+                           <columns>
+                              <TableColumn fx:id="appointmentIdCOL" prefWidth="41.600006103515625" text="ID" />
+                              <TableColumn fx:id="appointmentTitleCOL" prefWidth="63.199981689453125" text="Title" />
+                              <TableColumn fx:id="appointmentDescriptionCOL" prefWidth="86.39999389648438" text="Description" />
+                              <TableColumn fx:id="appointmentLocationCOL" prefWidth="61.5999755859375" text="Location" />
+                              <TableColumn fx:id="appointmentContactCOL" prefWidth="62.39996337890625" text="Contact" />
+                              <TableColumn fx:id="appointmentTypeCOL" prefWidth="92.0" text="Type" />
+                              <TableColumn fx:id="appointmentStartCOL" prefWidth="129.60003662109375" text="Start Date &amp; Time" />
+                              <TableColumn fx:id="appointmentEndCOL" prefWidth="129.5999755859375" text="End Date &amp; Time" />
+                              <TableColumn fx:id="appointmentCustomerIdCOL" prefWidth="79.199951171875" text="Customer ID" />
+                              <TableColumn fx:id="appointmentUserIdCOL" prefWidth="54.4000244140625" text="User ID" />
+                           </columns>
+                        </TableView>
+                     </content>
+                  </Tab>
+                  <Tab fx:id="customersTab" closable="false" onSelectionChanged="#onSelectionCustomers" text="Customers">
+                     <content>
+                        <TableView fx:id="customerTBL">
+                           <columns>
+                              <TableColumn fx:id="customerIdCOL" prefWidth="73.60000610351562" text="ID" />
+                              <TableColumn fx:id="customerNameCOL" prefWidth="179.20004272460938" text="Name" />
+                              <TableColumn fx:id="customerAddressCOL" prefWidth="181.5999755859375" text="Address" />
+                              <TableColumn fx:id="customerPostalCodeCOL" minWidth="0.0" prefWidth="125.5999755859375" text="Postal Code" />
+                              <TableColumn fx:id="customerPhoneNumCOL" prefWidth="146.4000244140625" text="Phone Number" />
+                              <TableColumn fx:id="customerDivisionIdCOL" minWidth="0.0" prefWidth="100.800048828125" text="Divison ID" />
+                           </columns>
+                        </TableView>
+                     </content>
+                  </Tab>
+                  <Tab fx:id="scheduleTab" closable="false" onSelectionChanged="#onSelectionSchedule" text="Schedule">
+                     <content>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <VBox alignment="TOP_CENTER" prefHeight="301.0" prefWidth="190.0">
+                                 <children>
+                                    <RadioButton mnemonicParsing="false" onAction="#onActionContactComboEnable" text="Select to view the schedule of a contact's apointment(s)" wrapText="true">
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="scheduleToggleGroup" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                    <ComboBox fx:id="contactCOMBO" disable="true" onAction="#onActionScheduleContactSelect" prefWidth="150.0" promptText="Select a contact" />
+                                    <Label text="--- or ---" textAlignment="CENTER">
+                                       <padding>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </padding>
+                                       <font>
+                                          <Font name="System Bold Italic" size="11.0" />
+                                       </font>
+                                    </Label>
+                                    <RadioButton mnemonicParsing="false" onAction="#onActionScheduleMonthType" text="Select to view the total number of customer appointments by type and month" toggleGroup="$scheduleToggleGroup" wrapText="true" />
+                                    <Label text="--- or ---" textAlignment="CENTER">
+                                       <padding>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </padding>
+                                       <font>
+                                          <Font name="System Bold Italic" size="11.0" />
+                                       </font>
+                                    </Label>
+                                    <RadioButton mnemonicParsing="false" onAction="#onActionCustomerComboEnable" text="Select to view the scheduled appointment(s) of a customer" toggleGroup="$scheduleToggleGroup" wrapText="true">
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="scheduleToggleGroup1" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                    <ComboBox fx:id="customerCOMBO" disable="true" onAction="#onActionScheduleCustomerSelect" prefWidth="150.0" promptText="Select a customer" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets left="10.0" top="20.0" />
+                                 </padding>
+                              </VBox>
+                              <ScrollPane prefHeight="301.0" prefWidth="630.0">
+                                 <content>
+                                    <VBox>
+                                       <children>
+                                          <TextFlow fx:id="scheduleTXTFLOW" prefHeight="302.0" prefWidth="600.0">
+                                             <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                             </padding>
+                                             <children>
+                                                <Text fx:id="scheduleTXT" strokeType="OUTSIDE" strokeWidth="0.0" />
+                                             </children>
+                                          </TextFlow>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </HBox>
+                     </content>
+                  </Tab>
+                  <Tab fx:id="contactsTab" closable="false" onSelectionChanged="#onSelectionContacts" text="Contacts">
+                     <content>
+                        <TableView fx:id="contactTBL">
+                           <columns>
+                              <TableColumn fx:id="contactIdCOL" prefWidth="104.79998779296875" text="ID" />
+                              <TableColumn fx:id="contactNameCOL" minWidth="6.4000244140625" prefWidth="379.199951171875" text="Name" />
+                              <TableColumn fx:id="contactEmailCOL" minWidth="0.0" prefWidth="320.00006103515625" text="Email" />
+                           </columns>
+                        </TableView>
+                     </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+            <HBox prefHeight="70.0" prefWidth="800.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="400.0" spacing="10.0">
+                     <children>
+                        <Button fx:id="addBTN" mnemonicParsing="false" onAction="#onActionAdd" prefWidth="60.0" text="Add" />
+                        <Button fx:id="updateBTN" mnemonicParsing="false" onAction="#onActionUpdate" prefHeight="26.0" prefWidth="60.0" text="Update" />
+                        <Button fx:id="deleteBTN" mnemonicParsing="false" onAction="#onActionDelete" prefWidth="60.0" text="Delete" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="400.0" spacing="10.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#onActionSignOut" prefHeight="26.0" prefWidth="63.0" text="Sign out" />
+                        <Button layoutX="330.0" layoutY="32.0" mnemonicParsing="false" onAction="#onActionExitApplication" prefWidth="60.0" text="Exit" />
+                     </children>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="20.0" right="20.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
