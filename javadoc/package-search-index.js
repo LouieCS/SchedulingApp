@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"m":"lsc195.lsc195","l":"controller"},{"m":"lsc195.lsc195","l":"helper"},{"m":"lsc195.lsc195","l":"lsc195.lsc195"},{"m":"lsc195.lsc195","l":"model"}];updateSearchResults();
